@@ -1,0 +1,14 @@
+[project]
+name = "variational-quantum-eigensolver"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ipykernel>=7.0.1",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.7",
+    "pyscf>=2.10.0",
+    "qiskit==1.4.2",
+    "qiskit-nature>=0.7.2",
+]
