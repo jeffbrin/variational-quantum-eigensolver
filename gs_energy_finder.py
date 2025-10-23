@@ -68,4 +68,4 @@ def estimate_ground_state_energy(atoms: list[Atom]) -> float:
             dist_in_bohr = distance * ANGSTROM_TO_BOHR
             nuclear_repulsion_energy += atom1.atomic_number * atom2.atomic_number / dist_in_bohr
 
-    return electronic_energy + nuclear_repulsion_energy
+    return (electronic_energy + nuclear_repulsion_energy).real
