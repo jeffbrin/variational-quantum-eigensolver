@@ -1,13 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import Arc
 from math import pi, sin, cos, sqrt, radians, acos, degrees
-from scipy.interpolate import griddata
 import os
 
 from gs_energy_finder import estimate_ground_state_energy, Atom
 
-USE_EXISTING_DATA = True
+USE_EXISTING_DATA = False
 CONCENTRATE_AROUND_KNOWN_EQUILIBRIUM = False
 
 EQUILIBRIUM_DISTANCE = 0.957
