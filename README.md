@@ -40,7 +40,7 @@ For H<sub>2</sub>, I used the SCF driver and Qiskit's VQE solver to find the gro
 ![H2_energy_vs_interatomic_distance](figures/H2_energy.png)
 
 ### LiH
-For LiH, I used the SCF driver and Qiskit's VQE solver to find the ground-state energy at varying bond distances. I found that at LiH's bond distance and ground state energy at equilibrium are 1.582 Å and -7.883 E<sub>h</sub>, respectively. This is slightly less accurate than the H<sub>2</sub> approximations but is still representative of the reference values: ~1.64 Å and −7.431 E<sub>h</sub> ([Dr. Pant](https://indico.in2p3.fr/event/2481/contributions/24469/attachments/19766/24292/ID_72_poster_A0.pdf))
+For LiH, I used the SCF driver and Qiskit's VQE solver to find the ground-state energy at varying bond distances. I found that at LiH's bond distance and ground state energy at equilibrium are 1.582 Å and -7.883 E<sub>h</sub>, respectively. This is slightly less accurate than the H<sub>2</sub> approximations but is still representative of the reference values: ~1.64 Å and −7.431 E<sub>h</sub> ([Pant](https://indico.in2p3.fr/event/2481/contributions/24469/attachments/19766/24292/ID_72_poster_A0.pdf))
 
 ![image](figures/LiH_Energy.png)
 
