@@ -43,3 +43,15 @@ For H<sub>2</sub>, I used the SCF driver and Qiskit's VQE solver to find the gro
 For LiH, I used the SCF driver and Qiskit's VQE solver to find the ground-state energy at varying bond distances. I found that at LiH's bond distance and ground state energy at equilibrium are 1.582 Å and -7.883 E<sub>h</sub>, respectively. This is slightly less accurate than the H<sub>2</sub> approximations but is still representative of the reference values: ~1.64 Å and −7.431 E<sub>h</sub> (https://indico.in2p3.fr/event/2481/contributions/24469/attachments/19766/24292/ID_72_poster_A0.pdf)
 
 ![image](figures/LiH_Energy.png)
+
+### H<sub>2</sub>O
+For H<sub>2</sub>O, there are multiple properties to consider. Having an extra atom, H<sub>2</sub>O is more complex than H<sub>2</sub> and LiH. Since we can no longer assume that the molecule is structured linearly, we can vary the position of each atom in multiple axes, not just vary the distance between them. Since the atoms will always be arranged in a plane, we only need to give them 2 degrees of freedom. So, to find the equilibrium geometry of H<sub>2</sub>O, I simulated the molecule with the oxygen molecule stationary at (0, 0). Then, I kept the first hydrogen atom on the y axis, and varied its distance from the oxygen molecule, so it was found at (0, y<sub>1</sub>). Then, the second hydrogen atom was free to move along the circle with radius y<sub>1</sub>. So, for any given distance (y) from oxygen to the first hydrogen, I approximated the ground-state energy of the molecule with the second hydrogen rotating around a circle of that given distance (y). Then, I varied the distance to form a surface of points, approximating the ground-state energy for varying angles and distances, which allows us to see how the energy changes according to the geometry. Those points can be seen from multiple angles below.
+
+![H2O_Configuration](figures/H2O_GSE_vs_hydrogen_position.png)
+![H2O_Configuration_2](figures/H2O_GSE_vs_hydrogen_position_2.png)
+
+These graphs show that the second hydrogen atom was found at (1.02, -0.11) with the ground-state energy of the molecule at -75.02 E<sub>h</sub>. We can use this position to find the distance from the oxygen molecule's position (0, 0), to determine the position of the first hydrogren molecule. The resulting equilibrium geometry is shown below.
+
+![H2O_Eq](figures/H2O_equilibrium_state.png)
+
+So, this technique found the equilibrium geometry of H<sub>2</sub>O to have a distance of 1.03 Å between the hydrogen and oxygen atoms, with the three atoms forming a 96.1° angle, and a ground-state energy of -75.02 E<sub>h</sub>. This is slightly off the reference values of 0.958 Å, 104.5°, and −85.512 E<sub>h</sub> (https://cccbdb.nist.gov/expgeom2x.asp?casno=7732185, https://arxiv.org/pdf/1002.1287#:~:text=We%20present%20a%20novel%20DMRG,other%20many%2Dbody%20numerical%20methods.&text=We%20wish%20to%20thank%20C,310%2C%20530%20(1999).&text=(2007))

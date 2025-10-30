@@ -96,10 +96,10 @@ ax.set_ylim(-MAX_BOND_LENGTH, MAX_BOND_LENGTH)
 ax.set_zlim(min_z, min_z+0.25)
 ax.plot([min_x], [min_y], [min_z], marker="o", c="r", markersize=10)
 ax.text(min_x, min_y, min_z, f"({round(min_x, 2)}, {round(min_y, 2)}, {round(min_z, 2)})")
-ax.set_title("Ground State Energy (H$_E$) vs. Hydrogen Position")
+ax.set_title("Ground State Energy (E$_h$) vs. Hydrogen Position")
 ax.set_xlabel("Second Hydrogen x Position (Å)")
 ax.set_ylabel("Second Hydrogen y Position (Å)")
-ax.set_zlabel("Ground State Energy (H$_E$)")
+ax.set_zlabel("Ground State Energy (E$_h$)")
 
 # Plot the H2O configuration as another plot
 # Plot configuration
