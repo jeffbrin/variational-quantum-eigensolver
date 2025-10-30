@@ -4,13 +4,13 @@ A project revolving around the Qiskit package which approximates molecular groun
 ## What does this repository contain?
 This repository has four important python scripts.
 
-```
+```markdown
 ├── gs_energy_finder.py         <- Open-source license if one is chosen
 ├── tutorial_annotation.ipynb   <- Open-source license if one is chosen
 ├── figures                     <- Generated graphics and figures to be used in reporting
-|  └── H<sub>2</sub>.py                    <- Finds equilibrium bond distance for an H<sub>2</sub> molecule
+|  └── H2.py                    <- Finds equilibrium bond distance for an H₂ molecule
 |  └── LiH.py                   <- Finds equilibrium bond distance for an LiH molecule
-|  └── H<sub>2</sub>O.py                   <- Finds equilibrium geometry for an H<sub>2</sub>O molecule
+|  └── H2O.py                   <- Finds equilibrium geometry for an H₂O molecule
 ```
 
 ### gs_energy_finder.py
@@ -35,12 +35,12 @@ To run files in the `equilibrium_solvers` folder, run the following.
 The motivation behind this project was to learn about molecular bonding and the Qiskit library. Here, I'll list the findings of my work and important graphs which illustrate said findings. Note that the approximations are relatively crude. With more time and computational power, I could have used a more accurate basis than sto3g, which lacks some granularity when describing electron distributions. Changing to another basis would likely bring these approximations closer to the reference values.
 
 ### H<sub>2</sub>
-For H<sub>2</sub>, I used the SCF driver and Qiskit's VQE solver to find the ground-state energy at varying bond distances. I found that at H<sub>2</sub>'s bond distance and ground state energy at equilibrium are 0.735 Å and -1.137 E<sub>h</sub>, respectively. This accurately approximates the reference values of ~7.4 Å and −1.136 E<sub>h</sub> (https://chem.libretexts.org/Courses/University_of_California_Davis/UCD_Chem_002A/UCD_Chem_2A/Text/Unit_IV%3A_Electronic_Structure_and_Bonding/10%3A_Bonding_II%3A_Additional_Aspects/10.1%3A_Bonding_Theories, https://www.researchgate.net/publication/385781779_Optimization_of_ground-state_energy_for_various_molecules_using_the_Variational_Quantum_Eigensolver_on_IBM's_quantum_computer)
+For H<sub>2</sub>, I used the SCF driver and Qiskit's VQE solver to find the ground-state energy at varying bond distances. I found that at H<sub>2</sub>'s bond distance and ground state energy at equilibrium are 0.735 Å and -1.137 E<sub>h</sub>, respectively. This accurately approximates the reference values of ~7.4 Å and −1.172 E<sub>h</sub> ([UC Davis](https://chem.libretexts.org/Courses/University_of_California_Davis/UCD_Chem_002A/UCD_Chem_2A/Text/Unit_IV%3A_Electronic_Structure_and_Bonding/10%3A_Bonding_II%3A_Additional_Aspects/10.1%3A_Bonding_Theories), [Chen et al.](https://doi.org/https://doi.org/10.1016/S1049-250X(05)51015-2))
 
 ![H2_energy_vs_interatomic_distance](figures/H2_energy.png)
 
 ### LiH
-For LiH, I used the SCF driver and Qiskit's VQE solver to find the ground-state energy at varying bond distances. I found that at LiH's bond distance and ground state energy at equilibrium are 1.582 Å and -7.883 E<sub>h</sub>, respectively. This is slightly less accurate than the H<sub>2</sub> approximations but is still representative of the reference values: ~1.64 Å and −7.431 E<sub>h</sub> (https://indico.in2p3.fr/event/2481/contributions/24469/attachments/19766/24292/ID_72_poster_A0.pdf)
+For LiH, I used the SCF driver and Qiskit's VQE solver to find the ground-state energy at varying bond distances. I found that at LiH's bond distance and ground state energy at equilibrium are 1.582 Å and -7.883 E<sub>h</sub>, respectively. This is slightly less accurate than the H<sub>2</sub> approximations but is still representative of the reference values: ~1.64 Å and −7.431 E<sub>h</sub> ([Dr. Pant](https://indico.in2p3.fr/event/2481/contributions/24469/attachments/19766/24292/ID_72_poster_A0.pdf))
 
 ![image](figures/LiH_Energy.png)
 
@@ -54,4 +54,16 @@ These graphs show that the second hydrogen atom was found at (1.02, -0.11) with 
 
 ![H2O_Eq](figures/H2O_equilibrium_state.png)
 
-So, this technique found the equilibrium geometry of H<sub>2</sub>O to have a distance of 1.03 Å between the hydrogen and oxygen atoms, with the three atoms forming a 96.1° angle, and a ground-state energy of -75.02 E<sub>h</sub>. This is slightly off the reference values of 0.958 Å, 104.5°, and −85.512 E<sub>h</sub> (https://cccbdb.nist.gov/expgeom2x.asp?casno=7732185, https://arxiv.org/pdf/1002.1287#:~:text=We%20present%20a%20novel%20DMRG,other%20many%2Dbody%20numerical%20methods.&text=We%20wish%20to%20thank%20C,310%2C%20530%20(1999).&text=(2007))
+So, this technique found the equilibrium geometry of H<sub>2</sub>O to have a distance of 1.03 Å between the hydrogen and oxygen atoms, with the three atoms forming a 96.1° angle, and a ground-state energy of -75.02 E<sub>h</sub>. This is slightly off the reference values of 0.958 Å, 104.5°, and −85.512 E<sub>h</sub>. ([nist](https://cccbdb.nist.gov/expgeom2x.asp?casno=7732185), [Luo et al.](https://arxiv.org/pdf/1002.1287))
+
+This inaccuracy is very likely has two reasons. First, since the H<sub>2</sub>O molecule is more complex than the others in this project, it was taking comparatively much longer to calculate the ground-state energy. In additon, because of the extra degree of freedome, more positions parameters had to be varied to determine the equilibrium geometry. This all meant that the number of points tested was greatly reduced, leading to less granular data. Secondly, the simple basis (sto3g) was likely insufficient here. The angle formed by the hydrogen and oxygen atoms is a result of the oxygen's electrons' configuration and repulsive forces between the two hydrogens' electrons. This is not captured very accurately with such a simple basis my guess it that this led to an underestimate of that force, allowing the hydrogen atoms to move closer to eachother. 
+
+## References
+[Qiskit Documentation](https://qiskit-community.github.io/qiskit-nature/tutorials/01_electronic_structure.html)
+
+[Quantum Computing for Quantum Chemistry](https://pubs.acs.org/doi/book/10.1021/acsinfocus.7e9012)
+
+
+
+## License
+This project is licensed under the Apache-2.0 License.
