@@ -5,8 +5,8 @@ A project revolving around the Qiskit package which approximates molecular groun
 This repository has four important python scripts.
 
 ```markdown
-├── gs_energy_finder.py         <- Open-source license if one is chosen
-├── tutorial_annotation.ipynb   <- Open-source license if one is chosen
+├── gs_energy_finder.py         <- Computes ground state energy levels of molecules using Qiskit's VQE
+├── tutorial_annotation.ipynb   <- An annotated version of qiskit's ground state energy approximation tutorial
 ├── figures                     <- Generated graphics and figures to be used in reporting
 |  └── H2.py                    <- Finds equilibrium bond distance for an H₂ molecule
 |  └── LiH.py                   <- Finds equilibrium bond distance for an LiH molecule
